@@ -1,0 +1,47 @@
+#! api-deployment.yaml
+# Generated code, do not edit
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: api
+    namespace: transaction-pipeline
+    labels:
+        com.docker.compose.project: transaction-pipeline
+        com.docker.compose.service: api
+spec:
+    replicas: 1
+    selector:
+        matchLabels:
+            com.docker.compose.project: transaction-pipeline
+            com.docker.compose.service: api
+    strategy:
+        type: Recreate
+    template:
+        metadata:
+            labels:
+                com.docker.compose.project: transaction-pipeline
+                com.docker.compose.service: api
+                com.docker.compose.network.default: "true"
+        spec:
+            containers:
+                - name: api
+                  image: transaction-pipeline-api
+                  imagePullPolicy: IfNotPresent
+                  args:
+                    - uvicorn
+                    - app.main:app
+                    - --host
+                    - 0.0.0.0
+                    - --port
+                    - 8000
+                    - --reload
+                  ports:
+                    - name: api-8000
+                      containerPort: 8000
+                  volumeMounts:
+                    - name: app
+                      mountPath: /app
+            volumes:
+                - name: app
+                  hostPath:
+                    path: C:\bca\project1\transaction-pipeline\transaction-pipeline
