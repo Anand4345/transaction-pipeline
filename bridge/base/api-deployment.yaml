@@ -24,7 +24,7 @@ spec:
                 com.docker.compose.network.default: "true"
         spec:
             containers:
-                - name: api
+                - name: pipeline-api
                   image: transaction-pipeline-api
                   imagePullPolicy: IfNotPresent
                   args:

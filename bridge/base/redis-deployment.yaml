@@ -24,7 +24,7 @@ spec:
                 com.docker.compose.network.default: "true"
         spec:
             containers:
-                - name: redis
+                - name: pipeline-redis
                   image: redis:7
                   imagePullPolicy: IfNotPresent
                   ports:

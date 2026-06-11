@@ -15,8 +15,8 @@ spec:
         com.docker.compose.project: transaction-pipeline
         com.docker.compose.service: api
     ports:
-        - name: api-8000
-          port: 8000
+        - name: api-8001
+          port: 8001
           protocol: TCP
           targetPort: api-8000
 

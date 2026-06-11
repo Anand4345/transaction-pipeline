@@ -7,14 +7,12 @@ from app.workers.worker import process_job
 
 router = APIRouter()
 
-
 def get_db():
     db = SessionLocal()
     try:
         yield db
     finally:
         db.close()
-
 
 @router.post("/jobs/upload")
 def upload(file: UploadFile = File(...), db: Session = Depends(get_db)):
@@ -32,8 +30,3 @@ def upload(file: UploadFile = File(...), db: Session = Depends(get_db)):
     process_job.delay(job.id, path)
 
     return {"job_id": job.id}
-
-
-@router.get("/jobs")
-def get_jobs():
-    return []

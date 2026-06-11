@@ -13,8 +13,8 @@ spec:
         com.docker.compose.project: transaction-pipeline
         com.docker.compose.service: db
     ports:
-        - name: db-5432
-          port: 5432
+        - name: db-5433
+          port: 5433
           protocol: TCP
           targetPort: db-5432
 

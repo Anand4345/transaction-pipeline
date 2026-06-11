@@ -1,6 +1,7 @@
 import pandas as pd
 from app.services.cleaner import clean_data
 from app.services.anomaly import detect_anomalies
+from app.services.llm import classify_missing, generate_summary# app/services/pipeline.py
 from app.services.llm import classify_missing, generate_summary
 
 def run_pipeline(job_id, file_path):
